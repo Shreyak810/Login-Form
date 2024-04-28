@@ -8,9 +8,9 @@ app.use(express.json());
 
 const db = mysql.createConnection({
     host: 'localhost',
-    user: '21510024',
+    user: '21510025',
     password: 'India@2024',
-    database: 'db',
+    database: 'formdatabase',
 });
 
 db.connect((err) => {
@@ -23,7 +23,7 @@ db.connect((err) => {
 
 app.post('/signup', (req, res) => {
     const { name, email, password } = req.body;
-    const sql = 'INSERT INTO formtable (name, email, password) VALUES (?, ?, ?)';
+    const sql = 'INSERT INTO users (name, email, password) VALUES (?, ?, ?)';
     db.query(sql, [name, email, password], (err, result) => {
         if (err) {
             console.error('Error inserting data:', err);
@@ -39,3 +39,4 @@ const PORT = 8083;
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
+
